@@ -1,0 +1,3 @@
+Server=zabbix.example.com
+#ServerPort=10051
+Hostname=Your-Device
