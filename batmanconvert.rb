@@ -4,7 +4,7 @@ require 'csv'
 
 DEBUG = false
 INFILENAME = ARGV[0] || 'batman.csv' # defaults to local file
-OUTFILENAME = File.join(File.dirname(__FILE__), 'zabbix_values.txt')
+OUTFILENAME = File.join(File.dirname(__FILE__), 'zabbix_values.tmp')
 
 BATMAN_COLUMNS = [
   :timestamp,              # "Datum Zeit",
@@ -29,16 +29,22 @@ BATMAN_COLUMNS = [
 ]
 
 # CSV's default doesn't like batman's date-format
+# It's been defined before, but we can safely ignore that warning
 CSV::DateTimeMatcher = /\A\d\d\.\d\d\.\d{4}\s\d\d:\d\d:\d\d\Z/
 
 count = 0 # used in debugging, only
 File.open(OUTFILENAME, "w") do |outfile|
   outfile = STDOUT if DEBUG # output to stdout instead of file
   CSV.foreach(INFILENAME, headers: BATMAN_COLUMNS, converters: [:all]) do |row|
+    puts row[0] if count % 1000 == 0
+    count += 1
     next unless row[0].class == DateTime
     row.each do |key, value|
       outfile.puts "- #{key} #{row[0].strftime("%s")} #{value}"
     end
-    break if DEBUG && 3 < count += 1 # only output the first few lines for debugging
+    break if DEBUG && 3 < count # only output the first few lines for debugging
   end
 end
+
+# sending via zabbix_sender
+system("zabbix_sender -c zabbix_sender.conf -T -i #{OUTFILENAME}")
