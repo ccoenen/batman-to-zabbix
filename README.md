@@ -1,6 +1,6 @@
 # Batman to Zabbix Converter
 
-I was using Batman for a few days to track the battery life on my android phone. When i tried visualizing the information stored in those columns of text, it hit me: I already know something that is great at displaying stats: Zabbix. This will convert and send the data to your zabbix-server
+I was using Batman for a few days to track the battery life on my android phone. When i tried visualizing the information stored in those columns of text, it hit me: I already know something that is great at displaying stats: Zabbix. This will convert and send the data to your zabbix-server. If you like this script, let me know!
 
 ## Requirements
 
@@ -24,7 +24,7 @@ Copy `zabbix_sender.conf.example` to `zabbix_sender.conf`. Alter its contents to
 
 You have two possibilities to run the converter/importer:
 
-a) Place `batman.csv` into the project's directory and run `batmanconvert.rb`
+a) Place `batman.csv` into the project's directory and run `batmanconvert.rb`  
 b) Call `batmanconvert.rb` from a terminal and give it the csv's location as parameter like this: `batmanconvert.rb test/batman.01.csv` (in case you renamed it)
 
 ## License
