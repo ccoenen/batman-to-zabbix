@@ -6,6 +6,11 @@ DEBUG = false
 INFILENAME = ARGV[0] || 'batman.csv' # defaults to local file
 OUTFILENAME = File.join(File.dirname(__FILE__), 'zabbix_values.tmp')
 
+unless File.exist? INFILENAME
+  puts "Could not find #{INFILENAME}. Please place it next to the script or specify a path"
+  puts "like this: batmanconvert.rb ../path/to/batman.csv"
+end
+
 BATMAN_COLUMNS = [
   :timestamp,              # "Datum Zeit",
   :level,                  # "Level % (0 -100 max)",
