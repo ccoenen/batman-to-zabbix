@@ -29,6 +29,8 @@ You have two possibilities to run the converter/importer:
 a) Place `batman.csv` into the project's directory and run `batmanconvert.rb`  
 b) Call `batmanconvert.rb` from a terminal and give it the csv's location as parameter like this: `batmanconvert.rb test/batman.01.csv` (in case you renamed it)
 
+The program will produce two kinds of output: one is from the conversion (a bunch of timestamps), one is from zabbix_sender (a bunch of "info from server..." lines). A week of logging produces a 5MB CSV and a 28MB Tempfile. The import may take a few minutes.
+
 ## License
 
 This is not a huge script or anything out of the ordinary. If you must have a license: I'm triple-licensing it under the following licenses. Please pick the one that suits your needs.
