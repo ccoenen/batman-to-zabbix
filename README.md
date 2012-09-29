@@ -6,7 +6,9 @@ I was using Batman for a few days to track the battery life on my android phone.
 
 You need access to a server running [zabbix](http://www.zabbix.com/). If you do not have one (or are capable of setting one up), this script is not for you. Sorry 'bout that.
 
-You'll also need [Batman](https://play.google.com/store/apps/details?id=com.voss.batman), which you can get from the play store.
+Install [Batman](https://play.google.com/store/apps/details?id=com.voss.batman) on your phone. Don't forget to actually *start* logging. I tend to forget to start logging after i reboot my phone.
+
+The machine running the conversion needs [Ruby 1.9](http://ruby-lang.org) and a copy of the Zabbix-Agent.
 
 ## Setup
 
