@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 # encoding: utf-8
 # batman to zabbix sender converter
 require 'csv'
